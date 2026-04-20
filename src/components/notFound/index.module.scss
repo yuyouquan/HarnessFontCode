@@ -119,7 +119,7 @@
     animation: stampSlide 40000ms -40300ms linear infinite;
 }
 
-@-webkit-keyframes stampSlide {
+@mixin stamp-slide-keyframes {
     0% {
         -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px)
             translateY(130px);
@@ -134,19 +134,12 @@
     }
 }
 
+@-webkit-keyframes stampSlide {
+    @include stamp-slide-keyframes;
+}
+
 @keyframes stampSlide {
-    0% {
-        -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px)
-            translateY(130px);
-        transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px)
-            translateY(130px);
-    }
-    100% {
-        -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px)
-            translateY(-3870px);
-        transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px)
-            translateY(-3870px);
-    }
+    @include stamp-slide-keyframes;
 }
 .world {
     -webkit-transform: rotateX(-30deg) rotateY(-30deg);
@@ -258,7 +251,7 @@
         content: '0';
     }
 }
-@-webkit-keyframes roll {
+@mixin roll-keyframes {
     0% {
         -webkit-transform: rotateZ(0deg);
         transform: rotateZ(0deg);
@@ -280,27 +273,12 @@
         transform: rotateZ(90deg);
     }
 }
+
+@-webkit-keyframes roll {
+    @include roll-keyframes;
+}
 @keyframes roll {
-    0% {
-        -webkit-transform: rotateZ(0deg);
-        transform: rotateZ(0deg);
-    }
-    85% {
-        -webkit-transform: rotateZ(90deg);
-        transform: rotateZ(90deg);
-    }
-    87% {
-        -webkit-transform: rotateZ(88deg);
-        transform: rotateZ(88deg);
-    }
-    90% {
-        -webkit-transform: rotateZ(90deg);
-        transform: rotateZ(90deg);
-    }
-    100% {
-        -webkit-transform: rotateZ(90deg);
-        transform: rotateZ(90deg);
-    }
+    @include roll-keyframes;
 }
 @-webkit-keyframes slide {
     0% {

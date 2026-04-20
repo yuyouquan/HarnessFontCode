@@ -80,6 +80,53 @@ const Sider = (props) => {
         }
     }
 
+    const renderMenuItemContent = (v, showUnfoldIcon) => {
+        return (
+            <>
+                {!isShowsider && (
+                    <Popover
+                        content={v.title}
+                        placement="right">
+                        <div
+                            className={
+                                styles['MenuLiIcno']
+                            }>
+                            {v.icon && <img className={styles['MenuLiIconImg']}
+                                src={v.icon} />}
+                        </div>
+                    </Popover>
+                )}
+                {isShowsider && (
+                    <>
+                        <div
+                            className={
+                                styles['MenuLiIcno']
+                            }>
+                            {v.icon && <img className={styles['MenuLiIconImg']}
+                                src={v.icon} />}
+                        </div>
+                        <div
+                            className={
+                                styles['MenuLiTitle']
+                            }>
+                            <p>{v.title}</p>
+                        </div>
+                        {showUnfoldIcon && (
+                            <div
+                                className={
+                                    v?.unfold
+                                        ? `${styles['MenuLiDown']}`
+                                        : `${styles['MenuLiDown']} ${styles['MenuLiDownFold']}`
+                                }>
+                                <UnFoldIcno />
+                            </div>
+                        )}
+                    </>
+                )}
+            </>
+        )
+    }
+
     const getSubMenus = (v) => {
         return (
             <Auth key={v.key}
@@ -99,46 +146,7 @@ const Sider = (props) => {
                             onClickMenuItem(v.key, 'unfold')
                         }
                         style={!v.icon ? { paddingLeft: (13 * (v.path.split('/').indexOf(v.key))) } : {}}>
-                        {!isShowsider && (
-                            <Popover
-                                content={v.title}
-                                placement="right">
-                                <div
-                                    className={
-                                        styles['MenuLiIcno']
-                                    }>
-                                    {v.icon && <img className={styles['MenuLiIconImg']}
-                                        src={v.icon} />}
-                                </div>
-                            </Popover>
-                        )}
-                        {isShowsider && (
-                            <>
-                                <div
-                                    className={
-                                        styles['MenuLiIcno']
-                                    }>
-                                    {v.icon && <img className={styles['MenuLiIconImg']}
-                                        src={v.icon} />}
-                                </div>
-                                <div
-                                    className={
-                                        styles[
-                                        'MenuLiTitle'
-                                        ]
-                                    }>
-                                    <p>{v.title}</p>
-                                </div>
-                                <div
-                                    className={
-                                        v?.unfold
-                                            ? `${styles['MenuLiDown']}`
-                                            : `${styles['MenuLiDown']} ${styles['MenuLiDownFold']}`
-                                    }>
-                                    <UnFoldIcno />
-                                </div>
-                            </>
-                        )}
+                        {renderMenuItemContent(v, true)}
                     </li>}
                 </ul>
                 <CSSTransition
@@ -216,36 +224,7 @@ const Sider = (props) => {
                                         : `${v.path}`
                                 )
                             }}>
-                            {!isShowsider && (
-                                <Popover
-                                    content={v.title}
-                                    placement="right">
-                                    <div
-                                        className={
-                                            styles['MenuLiIcno']
-                                        }>
-                                        {v.icon && <img className={styles['MenuLiIconImg']}
-                                            src={v.icon} />}
-                                    </div>
-                                </Popover>
-                            )}
-                            {isShowsider && (
-                                <>
-                                    <div
-                                        className={
-                                            styles['MenuLiIcno']
-                                        }>
-                                        {v.icon && <img className={styles['MenuLiIconImg']}
-                                            src={v.icon} />}
-                                    </div>
-                                    <div
-                                        className={
-                                            styles['MenuLiTitle']
-                                        }>
-                                        <p>{v.title}</p>
-                                    </div>
-                                </>
-                            )}
+                            {renderMenuItemContent(v, false)}
                         </li>
                     </ul>
                 }
