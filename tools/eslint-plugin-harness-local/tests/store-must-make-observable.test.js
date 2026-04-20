@@ -24,6 +24,26 @@ ruleTester.run('store-must-make-observable', rule, {
     {
       code: "class NotAStore {}",
       filename: '/abs/src/utils/helper.js'
+    },
+    {
+      code: `
+        class UserStore {
+          constructor() {
+            if (someCondition()) {
+              makeAutoObservable(this)
+            }
+          }
+        }
+      `,
+      filename: '/abs/src/store/user.Store.js'
+    },
+    {
+      code: `
+        const UserStore = class {
+          constructor() { makeAutoObservable(this) }
+        }
+      `,
+      filename: '/abs/src/store/user.Store.js'
     }
   ],
   invalid: [
@@ -34,6 +54,24 @@ ruleTester.run('store-must-make-observable', rule, {
     },
     {
       code: "class UserStore {}",
+      filename: '/abs/src/store/user.Store.js',
+      errors: [{ messageId: 'missing' }]
+    },
+    {
+      code: `
+        class UserStore {
+          init() { makeAutoObservable(this) }
+        }
+      `,
+      filename: '/abs/src/store/user.Store.js',
+      errors: [{ messageId: 'missing' }]
+    },
+    {
+      code: `
+        const UserStore = class {
+          constructor() { this.name = 'x' }
+        }
+      `,
       filename: '/abs/src/store/user.Store.js',
       errors: [{ messageId: 'missing' }]
     }
