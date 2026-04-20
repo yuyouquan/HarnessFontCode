@@ -22,7 +22,6 @@
         "lodash": "^4.18.1",
         "mobx": "^6.15.0",
         "mobx-react": "^7.5.3",
-        "prettier": "^2.7.1",
         "qiankun": "^2.10.15",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
@@ -50,7 +49,17 @@
         "lint:fix": "yarn lint --fix",
         "test:structure": "jest --config tests/structure/jest.config.js --passWithNoTests",
         "dup:check": "jscpd src",
-        "ci:quality": "yarn lint && yarn test:structure && yarn dup:check"
+        "ci:quality": "yarn lint && yarn test:structure && yarn dup:check",
+        "prepare": "husky install"
+    },
+    "lint-staged": {
+        "src/**/*.{js,jsx}": [
+            "eslint",
+            "prettier --write"
+        ],
+        "src/**/*.{scss,json}": [
+            "prettier --write"
+        ]
     },
     "eslintConfig": {
         "extends": [
@@ -78,9 +87,12 @@
         "dotenv-cli": "^6.0.0",
         "eslint-plugin-harness-local": "link:./tools/eslint-plugin-harness-local",
         "eslint-plugin-react": "^7.37.5",
+        "husky": "^9.1.7",
         "jest": "^30.3.0",
+        "prettier": "^3.8.3",
         "jest-environment-node": "^30",
         "jscpd": "^4.0.9",
+        "lint-staged": "^16.4.0",
         "sass": "^1.99.0",
         "speed-measure-webpack-plugin": "^1.6.0",
         "webpackbar": "^5.0.2"
