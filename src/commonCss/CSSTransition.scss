@@ -1,0 +1,82 @@
+/**
+    *用于存放各个界面CSSTransition样式
+**/
+//Header 主菜单效果
+.Micro-Template-Header-MenuMain-enter {
+    width: 0px;
+    padding: 0;
+}
+.Micro-Template-Header-MenuMain-enter-active {
+    width: 352px;
+    padding: 6px 24px;
+    transition-property: all;
+    transition-duration: 500ms;
+}
+.Micro-Template-Header-MenuMain-enter-done {
+    width: 352px;
+    padding: 6px 24px;
+}
+.Micro-Template-Header-MenuMain-exit {
+    width: 352px;
+    padding: 6px 24px;
+}
+.Micro-Template-Header-MenuMain-exit-active {
+    width: 0px;
+    padding: 0;
+    transition-property: all;
+    transition-duration: 500ms;
+}
+.Micro-Template-Header-MenuMain-exit-done {
+    // opacity: 0;
+    width: 0px;
+}
+//Header 用户单效果
+.Micro-Template-Header-MenuProfile-enter {
+    // width: 0;
+    height: 0;
+}
+.Micro-Template-Header-MenuProfile-enter-active {
+    // width: 150px;
+    height: 140px;
+    transition-property: height;
+    transition-duration: 500ms;
+}
+.Micro-Template-Header-MenuProfile-enter-done {
+    // width: 150px;
+    height: 140px;
+}
+.Micro-Template-Header-MenuProfile-exit {
+    // width: 150px;
+    height: 140px;
+}
+.Micro-Template-Header-MenuProfile-exit-active {
+    // width: 0;
+    height: 0;
+    transition-property: height;
+    transition-duration: 500ms;
+}
+.Micro-Template-Header-MenuProfile-exit-done {
+    // width: 0;
+    height: 0;
+}
+//Sider 侧边栏效果
+.Micro-Template-Sider-MenuLiFold-enter {
+    opacity: 0;
+}
+.Micro-Template-Sider-MenuLiFold-enter-active {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+.Micro-Template-Sider-MenuLiFold-enter-done {
+    opacity: 1;
+}
+.Micro-Template-Sider-MenuLiFold-exit {
+    opacity: 1;
+}
+.Micro-Template-Sider-MenuLiFold-exit-active {
+    opacity: 0;
+    transition: opacity 500ms;
+}
+.Micro-Template-Sider-MenuLiFold-exit-done {
+    opacity: 0;
+}

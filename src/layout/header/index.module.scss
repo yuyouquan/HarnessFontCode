@@ -1,0 +1,94 @@
+.contentDiv {
+    width: 100%;
+    height: 64px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(
+        to right,
+        #f6f8fc 10%,
+        rgba(94, 153, 255, 0.06) 50%,
+        #f6f8fc 70%,
+        rgba(145, 0, 255, 0.1) 100%
+    );
+    padding: 20px;
+
+    .contentLeftDiv {
+        display: flex;
+        align-items: center;
+
+        .MenuMainDiv {
+            display: inline-block;
+            position: relative;
+
+            .MenuMainIcno {
+                cursor: pointer;
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        .MenuTextLogo {
+            cursor: pointer;
+        }
+
+        .headerDivider {
+            width: 1px;
+            height: 16px;
+            background: #f2f2f2;
+            margin: 0 16px;
+        }
+        .headerWord {
+            font-family: PingFang SC, PingFang SC;
+            font-weight: 600;
+            font-size: 18px;
+            color: #000000;
+            cursor: pointer;
+        }
+
+        .headerNameText {
+            font-weight: 500;
+            font-size: 16px;
+            color: #000000;
+            line-height: 19px;
+        }
+
+        .MenuProfileDiv {
+            display: inline-block;
+            position: relative;
+        }
+
+        .MenuIcon {
+            cursor: pointer;
+            font-size: 20px;
+            color: #b7b7b7;
+        }
+
+        .MenuLineLabel {
+            padding: 0px 15px;
+            color: #b7b7b7;
+            font-size: 21px;
+            margin-top: -4px;
+            // line-height: 62px;
+        }
+
+        .MenuTitle {
+            color: #b7b7b7;
+            margin-top: -3px;
+            font-size: 20px;
+            font-weight: 900;
+            // line-height: 62px;
+        }
+    }
+
+    .contentRightDiv {
+        margin-left: auto;
+
+        .profilePhoto {
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            border-radius: 50px;
+        }
+    }
+}

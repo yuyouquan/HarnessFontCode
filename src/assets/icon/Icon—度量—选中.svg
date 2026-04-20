@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon—度量—选中</title>
+    <defs>
+        <path d="M4.66666667,3.72385763 L1.13807119,0.195262146 C0.87772166,-0.065087382 0.455611674,-0.065087382 0.195262146,0.195262146 C-0.065087382,0.455611674 -0.065087382,0.87772166 0.195262146,1.13807119 L4.19526215,5.13807119 C4.45561167,5.39842072 4.87772166,5.39842072 5.13807119,5.13807119 L9.13807119,1.13807119 C9.39842072,0.87772166 9.39842072,0.455611674 9.13807119,0.195262146 C8.87772166,-0.065087382 8.45561167,-0.065087382 8.19526215,0.195262146 L4.66666667,3.72385763 Z" id="path-1"></path>
+    </defs>
+    <g id="Icon—度量—选中" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="16" height="16"></rect>
+        <g id="chevron-down" transform="translate(3.333333, 5.333333)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Shape" fill="#FFFFFF" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

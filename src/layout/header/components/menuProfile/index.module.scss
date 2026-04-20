@@ -1,0 +1,52 @@
+.contentDiv {
+    width: 186px;
+    height: 140px;
+    background: #2e3441;
+    border: 1px solid rgba(141, 141, 141, 1);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    z-index: 1001;
+    position: absolute;
+    top: 62px;
+    right: 0;
+    .userInfoDiv {
+        width: 100%;
+        text-align: center;
+        .profilePhotoImg {
+            width: 32px;
+            height: 32px;
+            margin-top: 20px;
+            border-radius: 50px;
+        }
+        .userInfoName {
+            margin-top: 7px;
+            font-size: 10px;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        .userInfoNumber {
+            margin-top: 2px;
+            font-size: 12px;
+            color: #999999;
+            font-weight: 400;
+        }
+    }
+    .loginOutDiv {
+        cursor: pointer;
+        margin-top: 8px;
+        text-align: center;
+        border-top: 1px solid rgba(141, 141, 141, 1);
+        width: 100%;
+        height: 30px;
+        border-radius: 0px 0px 4px 4px;
+        .loginOutBtn {
+            line-height: 30px;
+            font-size: 12px;
+            color: #ffffff;
+            font-weight: 400;
+        }
+    }
+    .loginOutDiv:hover {
+        background: #1d2129;
+    }
+}

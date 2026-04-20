@@ -1,0 +1,129 @@
+.contentDiv-active {
+    width: 205px;
+    padding: 8px 6px;
+    height: calc(100vh - 62px);
+    background-color: #1d2129;
+    position: relative;
+    transition: width 300ms;
+}
+
+.contentDiv-unactive {
+    width: 55px;
+    padding: 8px 6px;
+    height: calc(100vh - 62px);
+    background-color: #1d2129;
+    position: relative;
+    transition: width 300ms;
+}
+
+.changeMenuIcnoDiv {
+    cursor: pointer;
+    color: #999999;
+    position: absolute;
+    right: 23px;
+    bottom: 23px;
+}
+.MenuUlDiv-outer {
+    width: 200px;
+    height: calc(100vh - 120px);
+    position: relative;
+    overflow: hidden;
+}
+.MenuUlDiv-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0px;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.MenuUl {
+    list-style: none;
+    font-weight: 400;
+    color: #999999;
+}
+.MenuUlFold {
+    width: 45px;
+}
+.MenuUlChild {
+    list-style: none;
+    font-weight: 400;
+    color: #999999;
+}
+.MenuLi {
+    cursor: pointer;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin-bottom: 6px;
+    padding: 9px;
+    border-radius: 4px;
+}
+.MenuTitleLi {
+    cursor: pointer;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin-bottom: 6px;
+    padding: 9px;
+    border-radius: 4px;
+}
+
+.MenuTitleLi:hover {
+    transition: all 700ms;
+    font-weight: 500;
+    color: #ffffff;
+}
+.MenuLi:hover {
+    transition: all 700ms;
+    background: #1875f0;
+    // font-weight: 500;
+    color: #ffffff;
+}
+.MenuLiChoosed {
+    transition: all 500ms;
+    background: #1875f0;
+    font-weight: 400;
+    color: #ffffff;
+}
+.MenuChildLiChoosed {
+    transition: all 500ms;
+    background: #1875f0;
+    font-weight: 500;
+    color: #ffffff;
+}
+.MenuTitleLiChoosed {
+    font-weight: 400;
+    color: #ffffff;
+    transition: all 500ms;
+}
+
+.MenuLiTitle {
+    font-size: 14px;
+    margin-left: 17px;
+}
+.MenuLiDown {
+    margin-left: auto;
+    margin-right: 8px;
+    transform: rotate(180deg);
+    transition: all 500ms;
+}
+.MenuLiDownFold {
+    transform: rotate(0deg);
+    transition: all 500ms;
+}
+.MenuLiChildTitle {
+    font-size: 14px;
+    // margin-left: 32px;
+    margin-left: 22px;
+}
+.MenuLiIcno {
+    margin-bottom: 3px;
+}
+.MenuLiIconImg {
+    width: 18px;
+    height: 18px;
+}

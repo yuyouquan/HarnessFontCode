@@ -1,0 +1,54 @@
+.contentDiv {
+    background-color: #ffffff;
+    padding: 6px 24px;
+    height: calc(100vh - 62px);
+    left: -13px;
+    position: absolute;
+    top: 43px;
+    width: 352px;
+    z-index: 1001;
+}
+.MenuTitle {
+    margin-top: 18px;
+    margin-bottom: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+    line-height: 24px;
+}
+.MenuItemsDiv {
+    margin-top: 2px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+}
+
+.MenuItemsDiv > .MenuItemDiv:last-child {
+    margin-right: auto;
+}
+
+.MenuItemsDiv > .MenuItemDiv:nth-child(3n + 3) {
+    margin-right: 0px;
+}
+
+.MenuItemDiv {
+    width: 101.3px;
+    margin-top: 16px;
+}
+
+.MenuItem {
+    font-size: 14px;
+    font-weight: 400;
+    color: #666666;
+    line-height: 24px;
+}
+.MenuItemChoosed {
+    font-size: 14px;
+    font-weight: 400;
+    color: #4773ff;
+    line-height: 24px;
+}
+
+.MenuItem:hover {
+    color: #4773ff;
+}

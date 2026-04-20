@@ -1,0 +1,79 @@
+{
+    "name": "micro-tones-template",
+    "version": "0.1.0",
+    "private": true,
+    "homepage": "/tones-template",
+    "dependencies": {
+        "@ant-design/icons": "^6.1.1",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^13.0.0",
+        "@testing-library/user-event": "^13.2.1",
+        "ahooks": "^3.9.7",
+        "antd": "^6.3.5",
+        "axios": "^1.14.0",
+        "classnames": "^2.3.2",
+        "copy-to-clipboard": "^3.3.3",
+        "craco-less": "^2.0.0",
+        "dayjs": "^1.11.20",
+        "echarts": "^5.4.0",
+        "eslint": "^8.24.0",
+        "framer-motion": "^7.5.3",
+        "history": "^5.3.0",
+        "lodash": "^4.18.1",
+        "mobx": "^6.15.0",
+        "mobx-react": "^7.5.3",
+        "prettier": "^2.7.1",
+        "qiankun": "^2.10.15",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-intl": "^6.8.9",
+        "react-router-dom": "^6.30.3",
+        "react-scripts": "5.0.1",
+        "react-transition-group": "^4.4.5",
+        "web-vitals": "^2.1.0"
+    },
+    "scripts": {
+        "start": "craco start",
+        "start:dev": "dotenv -e .env.dev craco start",
+        "start:sit": "dotenv -e .env.sit craco start",
+        "start:test": "dotenv -e .env.test craco start",
+        "start:prod": "dotenv -e .env.prod craco start",
+        "build:dev": "dotenv -e .env.dev craco build",
+        "build:sit": "dotenv -e .env.sit craco build",
+        "build:test": "dotenv -e .env.test craco build",
+        "build:prod": "GENERATE_SOURCEMAP=false dotenv -e .env.prod craco build",
+        "build:prod-sz": "GENERATE_SOURCEMAP=false dotenv -e .env.prod-sz craco build",
+        "build:prod-hk": "GENERATE_SOURCEMAP=false dotenv -e .env.prod-hk craco build",
+        "test": "craco test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@babel/eslint-parser": "^7.28.6",
+        "@craco/craco": "^6.4.5",
+        "babel-plugin-transform-decorators-legacy": "^1.3.5",
+        "circular-dependency-plugin": "^5.2.2",
+        "dotenv-cli": "^6.0.0",
+        "eslint-plugin-react": "^7.37.5",
+        "sass": "^1.99.0",
+        "speed-measure-webpack-plugin": "^1.6.0",
+        "webpackbar": "^5.0.2"
+    }
+}

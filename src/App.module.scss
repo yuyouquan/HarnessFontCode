@@ -1,0 +1,108 @@
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+img {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'HurmeGeometricSans3', -apple-system, BlinkMacSystemFont,
+        'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+        'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+// .headerDiv {}
+.contentDiv {
+    display: flex;
+    background: linear-gradient(
+        to top right,
+        #f6f8fc 85%,
+        rgba(145, 0, 255, 0.1) 100%
+    );
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+// .siderDiv { }
+.routeDiv {
+    flex: 1;
+    height: calc(100vh - 64px);
+    overflow: auto;
+}
+
+:global {
+    #webpack-dev-server-client-overlay {
+        display: none !important;
+    }
+    .ant-btn-primary {
+        background: linear-gradient(270deg, #5c9bfe 0%, #0a69fe 100%);
+        border-width: 0px;
+        &:hover {
+            transition: none;
+        }
+    }
+    .ant-table-wrapper .ant-table-thead > tr > th {
+        background: #fff;
+        font-weight: 400;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.65);
+        &::before {
+            height: 0px !important;
+        }
+    }
+    .ant-pagination .ant-pagination-item {
+        border: none;
+    }
+    .ant-pagination .ant-pagination-item-active a {
+        color: #4d41ff;
+    }
+    .ant-pagination-options .ant-select-selector {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    /*覆盖ant-design-vue 样式**/
+    .ant-btn-primary[disabled],
+    .ant-btn-primary[disabled]:hover {
+        color: #fff;
+        background: linear-gradient(270deg, #5c9bfe 0%, #0a69fe 100%);
+        cursor: not-allowed;
+        box-shadow: none;
+        opacity: 0.25;
+    }
+    .ant-card:not(.ant-card-bordered) {
+        box-shadow: none;
+    }
+    .ant-card {
+        border-radius: 16px;
+    }
+    .ant-table-wrapper .ant-table-thead > tr > th {
+        background-color: #fff;
+        font-weight: 400;
+        color: #595959;
+    }
+    .ant-table-wrapper
+        .ant-table-thead
+        > tr
+        > th:not(:last-child):not(.ant-table-selection-column):not(
+            .ant-table-row-expand-icon-cell
+        ):not([colspan])::before {
+        width: 0;
+    }
+}
+// .footerDiv {}
