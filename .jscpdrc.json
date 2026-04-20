@@ -1,0 +1,17 @@
+{
+  "threshold": 5,
+  "format": ["javascript", "jsx", "scss"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/build/**",
+    "**/*.test.js",
+    "**/tests/**",
+    "**/report/**"
+  ],
+  "minLines": 10,
+  "minTokens": 70,
+  "reporters": ["console", "markdown"],
+  "absolute": true,
+  "gitignore": true,
+  "output": "./report/jscpd"
+}

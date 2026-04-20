@@ -48,7 +48,9 @@
         "eject": "react-scripts eject",
         "lint": "eslint src tools/eslint-plugin-harness-local --ext .js,.jsx",
         "lint:fix": "yarn lint --fix",
-        "test:structure": "jest --config tests/structure/jest.config.js --passWithNoTests"
+        "test:structure": "jest --config tests/structure/jest.config.js --passWithNoTests",
+        "dup:check": "jscpd src",
+        "ci:quality": "yarn lint && yarn test:structure && yarn dup:check"
     },
     "eslintConfig": {
         "extends": [
@@ -78,6 +80,7 @@
         "eslint-plugin-react": "^7.37.5",
         "jest": "^30.3.0",
         "jest-environment-node": "^30",
+        "jscpd": "^4.0.9",
         "sass": "^1.99.0",
         "speed-measure-webpack-plugin": "^1.6.0",
         "webpackbar": "^5.0.2"
