@@ -22,7 +22,7 @@ ruleTester.run('store-must-make-observable', rule, {
       filename: '/abs/src/store/app.Store.js'
     },
     {
-      code: "class NotAStore {}",
+      code: 'class NotAStore {}',
       filename: '/abs/src/utils/helper.js'
     },
     {
@@ -48,12 +48,12 @@ ruleTester.run('store-must-make-observable', rule, {
   ],
   invalid: [
     {
-      code: "class UserStore { constructor(){ this.name = 'x' } }",
+      code: 'class UserStore { constructor(){ this.name = \'x\' } }',
       filename: '/abs/src/store/user.Store.js',
       errors: [{ messageId: 'missing' }]
     },
     {
-      code: "class UserStore {}",
+      code: 'class UserStore {}',
       filename: '/abs/src/store/user.Store.js',
       errors: [{ messageId: 'missing' }]
     },

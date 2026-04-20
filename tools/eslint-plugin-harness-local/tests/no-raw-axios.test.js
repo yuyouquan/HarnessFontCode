@@ -8,22 +8,22 @@ const ruleTester = new RuleTester({
 ruleTester.run('no-raw-axios', rule, {
   valid: [
     {
-      code: "import http from '@/services/xhr'",
+      code: 'import http from \'@/services/xhr\'',
       filename: '/abs/src/pages/Home/index.js'
     },
     {
-      code: "import axios from 'axios'",
+      code: 'import axios from \'axios\'',
       filename: '/abs/src/services/xhr/index.js'
     }
   ],
   invalid: [
     {
-      code: "import axios from 'axios'",
+      code: 'import axios from \'axios\'',
       filename: '/abs/src/pages/Home/index.js',
       errors: [{ messageId: 'banned' }]
     },
     {
-      code: "import { AxiosInstance } from 'axios'",
+      code: 'import { AxiosInstance } from \'axios\'',
       filename: '/abs/src/services/user/loginService.js',
       errors: [{ messageId: 'banned' }]
     }

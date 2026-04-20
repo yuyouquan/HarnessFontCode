@@ -15,7 +15,7 @@ export const routerItems = [
         unfold: false,
         exact: true,
         isChoose: false,
-        isShow: false,
+        isShow: false
     },
     {
         path: '/403',

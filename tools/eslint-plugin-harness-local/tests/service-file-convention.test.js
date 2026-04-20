@@ -8,39 +8,39 @@ const ruleTester = new RuleTester({
 ruleTester.run('service-file-convention', rule, {
   valid: [
     {
-      code: "export default { fetch() {} }",
+      code: 'export default { fetch() {} }',
       filename: '/abs/src/services/user/loginService.js'
     },
     {
-      code: "export default function foo(){}",
+      code: 'export default function foo(){}',
       filename: '/abs/src/services/dashboard/chartService.js'
     },
     {
-      code: "export default {}",
+      code: 'export default {}',
       filename: '/abs/src/services/xhr/index.js'
     },
     {
-      code: "export default {}",
+      code: 'export default {}',
       filename: '/abs/src/services/xhr/code.js'
     },
     {
-      code: "export default {}",
+      code: 'export default {}',
       filename: '/abs/src/pages/Home/index.js'
     }
   ],
   invalid: [
     {
-      code: "export default {}",
+      code: 'export default {}',
       filename: '/abs/src/services/user/login.js',
       errors: [{ messageId: 'badName' }]
     },
     {
-      code: "export const foo = 1",
+      code: 'export const foo = 1',
       filename: '/abs/src/services/user/loginService.js',
       errors: [{ messageId: 'noDefault' }]
     },
     {
-      code: "export const foo = 1",
+      code: 'export const foo = 1',
       filename: '/abs/src/services/user/login.js',
       errors: [
         { messageId: 'badName' },
@@ -48,7 +48,7 @@ ruleTester.run('service-file-convention', rule, {
       ]
     },
     {
-      code: "export default {}",
+      code: 'export default {}',
       filename: '/abs/src/services/user/Service.js',
       errors: [{ messageId: 'badName' }]
     }

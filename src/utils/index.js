@@ -7,8 +7,8 @@ import React from 'react';
  **/
 export function getUrlParam(url, name) {
   try {
-    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
-    var r = url.split('?')[1].match(reg);
+    let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+    let r = url.split('?')[1].match(reg);
     if (r != null) {
       return r[2];
     }

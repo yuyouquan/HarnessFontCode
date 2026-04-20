@@ -11,7 +11,8 @@ const Home = () => {
         // 使用React.Fragment 来避免向 DOM 添加额外的节点
         <Fragment>
             Home
-            <Button type="primary" onClick={() => message.success('antd 6 升级成功！')}>
+            <Button onClick={() => message.success('antd 6 升级成功！')}
+type="primary">
                 测试 Antd 6
             </Button>
         </Fragment>
