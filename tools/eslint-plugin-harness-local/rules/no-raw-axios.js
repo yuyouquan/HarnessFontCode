@@ -1,3 +1,5 @@
+const getFilename = require('../lib/getFilename')
+
 module.exports = {
   meta: {
     type: 'problem',
@@ -10,9 +12,8 @@ module.exports = {
     }
   },
   create(context) {
-    const filename = context.getFilename().replace(/\\/g, '/')
-    const inXhrDir = /\/src\/services\/xhr\//.test(filename)
-    if (inXhrDir) return {}
+    const filename = getFilename(context)
+    if (/(^|\/)src\/services\/xhr\//.test(filename)) return {}
 
     return {
       ImportDeclaration(node) {
