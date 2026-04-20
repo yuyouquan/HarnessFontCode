@@ -1,0 +1,51 @@
+stages:
+  - quality
+
+default:
+  image: node:18-alpine
+  cache:
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules/
+
+.only-mr: &only-mr
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+install:
+  stage: quality
+  script:
+    - yarn install --frozen-lockfile
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 hour
+  <<: *only-mr
+
+lint:
+  stage: quality
+  needs: [install]
+  script:
+    - yarn lint
+  <<: *only-mr
+
+structure-tests:
+  stage: quality
+  needs: [install]
+  script:
+    - yarn test:structure
+  <<: *only-mr
+
+duplication:
+  stage: quality
+  needs: [install]
+  script:
+    - yarn dup:check
+  artifacts:
+    when: always
+    paths:
+      - report/jscpd/
+    expire_in: 1 week
+  <<: *only-mr
