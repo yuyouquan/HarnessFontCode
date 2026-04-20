@@ -94,7 +94,9 @@ module.exports = {
         // ===== Harness Engineering 自定义规则（波次 1：3 条核心） =====
         'harness-local/no-raw-axios': 'error',
         'harness-local/service-file-convention': 'error',
-        'harness-local/store-must-make-observable': 'error'
+        'harness-local/store-must-make-observable': 'error',
+        // 波次 2
+        'harness-local/no-cross-store-import': 'warn'
     },
     settings: {
         'import/ignore': ['node_modules']
