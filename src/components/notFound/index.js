@@ -2,8 +2,8 @@ import { React } from 'react'
 import styles from './index.module.scss'
 
 const renderStampPair = (index) => [
-    <div key={`four-${index}`} className={styles['stamp four']}>4</div>,
-    <div key={`zero-${index}`} className={styles['stamp zero']}>0</div>,
+    <div className={styles['stamp four']} key={`four-${index}`}>4</div>,
+    <div className={styles['stamp zero']} key={`zero-${index}`}>0</div>
 ]
 
 const NotFound = () => {

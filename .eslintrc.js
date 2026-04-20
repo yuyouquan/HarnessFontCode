@@ -20,7 +20,9 @@ module.exports = {
             jsx: true
         }
     },
-    plugins: ['react', 'harness-local'],
+    // 注意：'react' plugin 由 package.json eslintConfig 的 react-app preset 提供，
+    // 这里不能重复声明（ESLint 8 会抛 "Plugin 'react' was conflicted" 并中止 craco build）。
+    plugins: ['harness-local'],
     rules: {
         quotes: [2, 'single'], //单引号
         'no-console': 1, //console使用警告
