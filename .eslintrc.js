@@ -96,7 +96,8 @@ module.exports = {
         'harness-local/service-file-convention': 'error',
         'harness-local/store-must-make-observable': 'error',
         // 波次 2
-        'harness-local/no-cross-store-import': 'warn'
+        'harness-local/no-cross-store-import': 'warn',
+        'harness-local/component-folder-convention': 'error'
     },
     settings: {
         'import/ignore': ['node_modules']
