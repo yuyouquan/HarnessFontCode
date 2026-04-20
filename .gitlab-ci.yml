@@ -49,3 +49,23 @@ duplication:
       - report/jscpd/
     expire_in: 1 week
   <<: *only-mr
+
+# 波次 3：熵扫描（scheduled）
+# 需要在 GitLab Settings → CI/CD → Schedules 新建：cron "0 0 * * 1"（每周一 00:00）
+# target develop 分支。需要在 Settings → CI/CD → Variables 配一个 GITLAB_BOT_TOKEN
+# （api scope 的 project access token），automatic generate-tech-debt-pr.js 要用。
+entropy-report:
+  stage: quality
+  image: node:18-alpine
+  before_script:
+    - apk add --no-cache git
+    - yarn install --frozen-lockfile
+  script:
+    - node scripts/entropy-scan.js > entropy.json
+    - node scripts/generate-tech-debt-pr.js entropy.json
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  artifacts:
+    paths:
+      - entropy.json
+    expire_in: 1 month
