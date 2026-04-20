@@ -30,6 +30,16 @@ ruleTester.run('no-cross-store-import', rule, {
       code: 'import UserStore from \'./user.Store.js\'',
       filename: '/abs/src/store/app.Store.js',
       errors: [{ messageId: 'crossStore' }]
+    },
+    {
+      code: 'import \'./other.Store\'',
+      filename: '/abs/src/store/app.Store.js',
+      errors: [{ messageId: 'crossStore' }]
+    },
+    {
+      code: 'import SelfStore from \'./user.Store\'',
+      filename: '/abs/src/store/user.Store.js',
+      errors: [{ messageId: 'crossStore' }]
     }
   ]
 })
