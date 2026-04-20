@@ -46,3 +46,19 @@ export const handleFilterOptions = (params) => {
 export const handleSubmit = (params) => {
     return http.post('/device_application/submit/', params)
 }
+
+export default {
+    queryInfoByPage,
+    queryStatus,
+    queryProjectInfoBySpm,
+    getProjectProduct,
+    getPageOptions,
+    getWeeklyStatistics,
+    handleAbandoned,
+    handleProjectDetail,
+    handleExtendRecycleTime,
+    handleUpdateDeviceVersion,
+    handleVersionHistory,
+    handleFilterOptions,
+    handleSubmit
+}

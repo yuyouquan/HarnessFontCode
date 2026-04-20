@@ -7,3 +7,5 @@ export const artifactList = (params) => {
 export const filterOptions = (params) => {
   return http.get('/artifact/filter_options/', { params })
 }
+
+export default { artifactList, filterOptions }

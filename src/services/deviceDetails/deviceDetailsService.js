@@ -10,3 +10,5 @@ export const statusStatistics = (params) => {
 export const applicationDetail = (params) => {
   return http.get(`device_application/${params.id}/application_detail/`, { params })
 }
+
+export default { deviceList, statusStatistics, applicationDetail }

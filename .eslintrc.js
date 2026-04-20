@@ -20,7 +20,7 @@ module.exports = {
             jsx: true
         }
     },
-    plugins: ['react'],
+    plugins: ['react', 'harness-local'],
     rules: {
         quotes: [2, 'single'], //单引号
         'no-console': 1, //console使用警告
@@ -88,7 +88,11 @@ module.exports = {
         'no-mixed-spaces-and-tabs': 0, //禁止混用tab和空格
         'prefer-arrow-callback': 0, //比较喜欢箭头回调
         'arrow-parens': 0, //箭头函数用小括号括起来
-        'arrow-spacing': 0 //=>的前/后括号
+        'arrow-spacing': 0, //=>的前/后括号
+        // ===== Harness Engineering 自定义规则（波次 1：3 条核心） =====
+        'harness-local/no-raw-axios': 'error',
+        'harness-local/service-file-convention': 'error',
+        'harness-local/store-must-make-observable': 'error'
     },
     settings: {
         'import/ignore': ['node_modules']

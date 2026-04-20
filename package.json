@@ -45,7 +45,9 @@
         "build:prod-sz": "GENERATE_SOURCEMAP=false dotenv -e .env.prod-sz craco build",
         "build:prod-hk": "GENERATE_SOURCEMAP=false dotenv -e .env.prod-hk craco build",
         "test": "craco test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "lint": "eslint src tools/eslint-plugin-harness-local --ext .js,.jsx",
+        "lint:fix": "yarn lint --fix"
     },
     "eslintConfig": {
         "extends": [
