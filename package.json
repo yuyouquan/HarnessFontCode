@@ -47,7 +47,8 @@
         "test": "craco test",
         "eject": "react-scripts eject",
         "lint": "eslint src tools/eslint-plugin-harness-local --ext .js,.jsx",
-        "lint:fix": "yarn lint --fix"
+        "lint:fix": "yarn lint --fix",
+        "test:structure": "jest --config tests/structure/jest.config.js --passWithNoTests"
     },
     "eslintConfig": {
         "extends": [
