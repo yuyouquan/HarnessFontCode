@@ -33,9 +33,47 @@
 3. 如果有 `prompts/<任务>.md`，参考那里的模板
 4. 写完 `yarn lint && yarn test:structure && yarn dup:check` 都过再提
 
+## 机械式约束清单（完整）
+
+### ESLint 自定义规则（`tools/eslint-plugin-harness-local/`）
+| 规则 ID | 级别 | 检查 |
+|---|---|---|
+| `harness-local/no-raw-axios` | error | 禁止 `import axios from 'axios'`（除 `services/xhr/` 内部） |
+| `harness-local/service-file-convention` | error | `services/<domain>/` 下文件必须 `xxxService.js` + default export |
+| `harness-local/store-must-make-observable` | error | `*.Store.js` 类构造器必须调 `makeObservable` / `makeAutoObservable` |
+| `harness-local/no-cross-store-import` | warn | Store 间禁止直接 import（通过 rootStore 注入） |
+| `harness-local/component-folder-convention` | error | `components/` 样式必须 `.module.scss` / `.module.css` |
+| `harness-local/utils-reuse-hint` | warn | `pages`/`components` 内 >5 行自定义 hook 建议抽到 `utils/hooks/` |
+
+### 结构化测试（`tests/structure/`）
+| 测试文件 | 保证 |
+|---|---|
+| `routes-vs-pages.test.js` | `src/pages/` 目录 ↔ `router/config.js` 双向一致 |
+| `stores-registered.test.js` | 每个 `*.Store.js` 都在 `src/store/index.js` 注册 |
+| `services-structure.test.js` | service 文件命名 + 目录扁平 + default export |
+| `components-structure.test.js` | 组件目录结构 + i18n en-US/zh-CN key 对齐 |
+
+### 重复检测（`.jscpdrc.json`）
+- 总重复率 ≤ 5%，最少 10 行 / 70 token 才计入
+- 覆盖 javascript / jsx / scss
+
+### 熵管理（`scripts/entropy-scan.js`）
+- 每周一 00:00 定时跑，自动开 `tech-debt/entropy-report-YYYY-MM-DD` MR
+- 扫描维度：TODO/FIXME/XXX/HACK 注释（含 git-blame 存活天数）、knip 识别的死代码/未使用导出
+
+### 一键本地验证
+```bash
+yarn ci:quality    # = yarn lint && yarn test:structure && yarn dup:check
+```
+
+### CI（`.gitlab-ci.yml`）
+- MR 触发：`lint` / `structure-tests` / `duplication` 三个并行 job
+- Schedule 触发：`entropy-report`（每周一 00:00，人工在 GitLab 界面配一次）
+
 ## 什么时候改本文件
 - 新增顶层目录、改变分层哲学、引入新工具链 → 改
 - 加一个组件/服务/页面 → 不改（改对应子目录的 AGENTS.md 或不用改）
+- 新增/下架 ESLint 规则、结构测试、CI job → **必须**同步更新上面的"机械式约束清单"
 
 ## Roadmap（后续演进）
 - 熵扫描补齐维度：依赖新鲜度、大文件扫描
