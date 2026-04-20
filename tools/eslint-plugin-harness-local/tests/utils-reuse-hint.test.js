@@ -18,6 +18,10 @@ ruleTester.run('utils-reuse-hint', rule, {
     {
       code: 'function nonHook() {\n  const a = 1\n  const b = 2\n  const c = 3\n  const d = 4\n  const e = 5\n  return a + b + c + d + e\n}',
       filename: '/abs/src/pages/Home/index.js'
+    },
+    {
+      code: 'function useExactlyFive() {\n  const a = 1\n  const b = 2\n  return a + b\n}',
+      filename: '/abs/src/pages/Home/index.js'
     }
   ],
   invalid: [

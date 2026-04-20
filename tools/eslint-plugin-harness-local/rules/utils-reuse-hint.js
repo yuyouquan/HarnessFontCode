@@ -10,12 +10,11 @@ module.exports = {
     },
     schema: [],
     messages: {
-      considerExtract: '自定义 hook "{{name}}" 超过 {{lines}} 行，考虑抽到 src/utils/hooks/。详见 src/utils/AGENTS.md'
+      considerExtract: '自定义 hook "{{name}}" 共 {{lines}} 行（阈值 {{threshold}}），考虑抽到 src/utils/hooks/。详见 src/utils/AGENTS.md'
     }
   },
   create(context) {
     const filename = getFilename(context)
-    // 只在 pages/ 或 components/ 下检查（不检查 utils/ 自身）
     if (!/\/src\/(pages|components)\//.test(filename)) return {}
 
     function check(node, name) {
@@ -27,7 +26,7 @@ module.exports = {
         context.report({
           node,
           messageId: 'considerExtract',
-          data: { name, lines: MIN_LINES }
+          data: { name, lines, threshold: MIN_LINES }
         })
       }
     }
@@ -42,8 +41,8 @@ module.exports = {
           (node.init.type === 'ArrowFunctionExpression' ||
            node.init.type === 'FunctionExpression')
         ) {
-          // 对箭头函数/函数表达式，用 init 节点的 loc 计算行数，起始位置从变量名开始
-          check(node.init, node.id && node.id.name)
+          // 使用 VariableDeclarator 的 loc（含变量名），与 FunctionDeclaration 保持一致
+          check(node, node.id && node.id.name)
         }
       }
     }
