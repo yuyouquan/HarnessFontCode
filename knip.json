@@ -1,0 +1,10 @@
+{
+  "entry": ["src/index.js", "src/App.js", "src/micro-action.js", "src/public-path.js"],
+  "project": ["src/**/*.{js,jsx}"],
+  "ignore": [
+    "src/**/*.test.js",
+    "src/setupTests.js",
+    "src/reportWebVitals.js"
+  ],
+  "ignoreDependencies": []
+}

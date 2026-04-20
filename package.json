@@ -89,10 +89,11 @@
         "eslint-plugin-react": "^7.37.5",
         "husky": "^9.1.7",
         "jest": "^30.3.0",
-        "prettier": "^3.8.3",
         "jest-environment-node": "^30",
         "jscpd": "^4.0.9",
+        "knip": "^6.5.0",
         "lint-staged": "^16.4.0",
+        "prettier": "^3.8.3",
         "sass": "^1.99.0",
         "speed-measure-webpack-plugin": "^1.6.0",
         "webpackbar": "^5.0.2"
