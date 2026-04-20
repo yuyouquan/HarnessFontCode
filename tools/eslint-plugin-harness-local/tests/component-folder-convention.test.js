@@ -18,6 +18,10 @@ ruleTester.run('component-folder-convention', rule, {
     {
       code: 'import \'./global.css\'',
       filename: '/abs/src/index.js'
+    },
+    {
+      code: 'import styles from \'./index.module.css\'',
+      filename: '/abs/src/components/MyBtn/index.js'
     }
   ],
   invalid: [

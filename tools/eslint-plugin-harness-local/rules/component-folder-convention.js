@@ -21,7 +21,8 @@ module.exports = {
         const src = node.source.value
         // 只检查本地样式文件（相对路径）
         if (!/^\.\.?\//.test(src)) return
-        if (/\.module\.scss$/.test(src)) return
+        // 同时接受 .module.scss 和 .module.css（CSS Modules 两种扩展名皆合法）
+        if (/\.module\.(scss|css)$/.test(src)) return
         if (/\.(scss|css)$/.test(src)) {
           context.report({ node, messageId: 'nonModuleScss' })
         }
