@@ -38,6 +38,19 @@ ruleTester.run('service-file-convention', rule, {
       code: "export const foo = 1",
       filename: '/abs/src/services/user/loginService.js',
       errors: [{ messageId: 'noDefault' }]
+    },
+    {
+      code: "export const foo = 1",
+      filename: '/abs/src/services/user/login.js',
+      errors: [
+        { messageId: 'badName' },
+        { messageId: 'noDefault' }
+      ]
+    },
+    {
+      code: "export default {}",
+      filename: '/abs/src/services/user/Service.js',
+      errors: [{ messageId: 'badName' }]
     }
   ]
 })

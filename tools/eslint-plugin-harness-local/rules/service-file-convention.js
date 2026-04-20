@@ -25,7 +25,7 @@ module.exports = {
     return {
       ExportDefaultDeclaration() { hasDefault = true },
       'Program:exit'(node) {
-        if (!/Service$/.test(base)) {
+        if (!/\wService$/.test(base)) {
           context.report({ node, messageId: 'badName' })
         }
         if (!hasDefault) {
