@@ -1,31 +1,22 @@
 stages:
+  - install
   - quality
 
-# 只在 MR 或 scheduled pipeline 下创建 pipeline，avoid 误导性的 0-job pipeline。
-workflow:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-
-default:
-  image: node:18-alpine
-  cache:
-    key:
-      files:
-        - yarn.lock
-    paths:
-      - node_modules/
-
-# 复用规则用 extends（GitLab 原生，兼容性比 YAML anchor 好）
+# 只在 merge request 触发的 pipeline 上跑（老 GitLab 兼容语法）
 .only-mr:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+  only:
+    - merge_requests
 
 install:
   extends: .only-mr
-  stage: quality
+  image: node:18-alpine
+  stage: install
   script:
     - yarn install --frozen-lockfile
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - node_modules/
   artifacts:
     paths:
       - node_modules/
@@ -33,25 +24,22 @@ install:
 
 lint:
   extends: .only-mr
+  image: node:18-alpine
   stage: quality
-  needs:
-    - install
   script:
     - yarn lint
 
 structure-tests:
   extends: .only-mr
+  image: node:18-alpine
   stage: quality
-  needs:
-    - install
   script:
     - yarn test:structure
 
 duplication:
   extends: .only-mr
+  image: node:18-alpine
   stage: quality
-  needs:
-    - install
   script:
     - yarn dup:check
   artifacts:
@@ -60,21 +48,19 @@ duplication:
       - report/jscpd/
     expire_in: 1 week
 
-# 波次 3：熵扫描（scheduled）
-# 需要在 GitLab Settings → CI/CD → Schedules 新建：cron "0 0 * * 1"（每周一 00:00）
-# target develop 分支。需要在 Settings → CI/CD → Variables 配一个 GITLAB_BOT_TOKEN
-# （api scope 的 project access token），automatic generate-tech-debt-pr.js 要用。
+# 熵扫描（scheduled 触发，需在 GitLab Settings → CI/CD → Schedules 配 cron "0 0 * * 1"
+# 以及 Variables 里配 GITLAB_BOT_TOKEN，api scope）
 entropy-report:
-  stage: quality
+  only:
+    - schedules
   image: node:18-alpine
+  stage: quality
   before_script:
     - apk add --no-cache git
     - yarn install --frozen-lockfile
   script:
     - node scripts/entropy-scan.js > entropy.json
     - node scripts/generate-tech-debt-pr.js entropy.json
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
   artifacts:
     paths:
       - entropy.json
