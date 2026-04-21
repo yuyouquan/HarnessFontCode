@@ -7,10 +7,9 @@ stages:
 #
 # tags: tones-ci-sit  —— 匹配项目已启用的专属 Runner (9f1121f1)
 #
-# YARN_REGISTRY：国内镜像，CI runner 无法访问境外 registry.yarnpkg.com，
-# 如果有公司内部 npm 镜像（比如 http://nexus.transsion.com/...），替换这里。
+# YARN_REGISTRY：公司内部前端私服（CI runner 无法访问境外 registry.yarnpkg.com）
 variables:
-  YARN_REGISTRY: "https://registry.npmmirror.com"
+  YARN_REGISTRY: "https://npm-fe.transsion.com/"
 
 install:
   image: node:18-alpine
