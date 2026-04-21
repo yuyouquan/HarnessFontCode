@@ -1,0 +1,38 @@
+name: Weekly Entropy Scan
+
+on:
+  schedule:
+    # 每周一 UTC 00:00（北京时间周一 08:00）
+    - cron: '0 0 * * 1'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  entropy-report:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # entropy-scan 要算 git blame 年龄，需要完整历史
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run entropy scan
+        run: node scripts/entropy-scan.js > entropy.json
+
+      - name: Upload entropy.json
+        uses: actions/upload-artifact@v4
+        with:
+          name: entropy-json
+          path: entropy.json
+          retention-days: 30
+
+      # 简化版：只上传 artifact。如果要自动开 PR，需要改 scripts/generate-tech-debt-pr.js
+      # 为 GitHub API 版本（使用 GITHUB_TOKEN + Octokit），或用 peter-evans/create-pull-request Action。

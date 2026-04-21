@@ -1,8 +1,8 @@
 {
-    "name": "micro-tones-template",
+    "name": "harness-front-code",
     "version": "0.1.0",
     "private": true,
-    "homepage": "/tones-template",
+    "homepage": "/my-app",
     "dependencies": {
         "@ant-design/icons": "^6.1.1",
         "@testing-library/jest-dom": "^5.14.1",

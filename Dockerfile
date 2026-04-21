@@ -1,10 +1,9 @@
-FROM harbor.transsion.com/node/node:16.15.1 as builder
+FROM node:18-alpine as builder
 
 WORKDIR /data
 COPY . /data/
 
 RUN yarn config delete proxy && yarn config delete https-proxy
-RUN yarn config set registry 'https://registry.npm.taobao.org'
 RUN yarn install
 RUN yarn run build:prod
 

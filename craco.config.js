@@ -16,7 +16,7 @@ module.exports = {
     },
     //解决 create-react-app 的开发者添加的特殊限制。它被实施ModuleScopePlugin以确保文件驻留在src/. 该插件确保来自应用程序源目录的相对导入不会到达它之外。
     configure: webpackConfig => {
-      webpackConfig.output.library = 'micro-tones-component';
+      webpackConfig.output.library = 'harness-front-code';
       webpackConfig.output.libraryTarget = 'umd';
       webpackConfig.output.chunkLoadingGlobal = `webpackJsonp_${name}`;
       const scopePluginIndex = webpackConfig.resolve.plugins.findIndex(
