@@ -4,10 +4,14 @@ stages:
 
 # 所有 feature 分支的 push 都跑 CI；develop/main 合进来的不重复跑；
 # 熵扫描由 schedule 触发，见文件底部。
+#
+# tags: tones-ci-sit  —— 匹配项目已启用的专属 Runner (9f1121f1)
 
 install:
   image: node:18-alpine
   stage: install
+  tags:
+    - tones-ci-sit
   script:
     - yarn install --frozen-lockfile
   cache:
@@ -27,6 +31,8 @@ install:
 lint:
   image: node:18-alpine
   stage: quality
+  tags:
+    - tones-ci-sit
   script:
     - yarn lint
   except:
@@ -38,6 +44,8 @@ lint:
 structure-tests:
   image: node:18-alpine
   stage: quality
+  tags:
+    - tones-ci-sit
   script:
     - yarn test:structure
   except:
@@ -49,6 +57,8 @@ structure-tests:
 duplication:
   image: node:18-alpine
   stage: quality
+  tags:
+    - tones-ci-sit
   script:
     - yarn dup:check
   artifacts:
@@ -69,6 +79,8 @@ entropy-report:
     - schedules
   image: node:18-alpine
   stage: quality
+  tags:
+    - tones-ci-sit
   before_script:
     - apk add --no-cache git
     - yarn install --frozen-lockfile
