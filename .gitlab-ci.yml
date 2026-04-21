@@ -2,13 +2,10 @@ stages:
   - install
   - quality
 
-# 只在 merge request 触发的 pipeline 上跑（老 GitLab 兼容语法）
-.only-mr:
-  only:
-    - merge_requests
+# 所有 feature 分支的 push 都跑 CI；develop/main 合进来的不重复跑；
+# 熵扫描由 schedule 触发，见文件底部。
 
 install:
-  extends: .only-mr
   image: node:18-alpine
   stage: install
   script:
@@ -21,23 +18,35 @@ install:
     paths:
       - node_modules/
     expire_in: 1 hour
+  except:
+    - develop
+    - main
+    - master
+    - schedules
 
 lint:
-  extends: .only-mr
   image: node:18-alpine
   stage: quality
   script:
     - yarn lint
+  except:
+    - develop
+    - main
+    - master
+    - schedules
 
 structure-tests:
-  extends: .only-mr
   image: node:18-alpine
   stage: quality
   script:
     - yarn test:structure
+  except:
+    - develop
+    - main
+    - master
+    - schedules
 
 duplication:
-  extends: .only-mr
   image: node:18-alpine
   stage: quality
   script:
@@ -47,9 +56,14 @@ duplication:
     paths:
       - report/jscpd/
     expire_in: 1 week
+  except:
+    - develop
+    - main
+    - master
+    - schedules
 
-# 熵扫描（scheduled 触发，需在 GitLab Settings → CI/CD → Schedules 配 cron "0 0 * * 1"
-# 以及 Variables 里配 GITLAB_BOT_TOKEN，api scope）
+# 熵扫描：schedule 触发，需在 GitLab Settings → CI/CD → Schedules 配 cron "0 0 * * 1"
+# 和 Variables 里配 GITLAB_BOT_TOKEN（api scope）
 entropy-report:
   only:
     - schedules
