@@ -6,6 +6,11 @@ stages:
 # 熵扫描由 schedule 触发，见文件底部。
 #
 # tags: tones-ci-sit  —— 匹配项目已启用的专属 Runner (9f1121f1)
+#
+# YARN_REGISTRY：国内镜像，CI runner 无法访问境外 registry.yarnpkg.com，
+# 如果有公司内部 npm 镜像（比如 http://nexus.transsion.com/...），替换这里。
+variables:
+  YARN_REGISTRY: "https://registry.npmmirror.com"
 
 install:
   image: node:18-alpine
@@ -13,7 +18,7 @@ install:
   tags:
     - tones-ci-sit
   script:
-    - yarn install --frozen-lockfile
+    - yarn install --frozen-lockfile --registry "$YARN_REGISTRY"
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
@@ -83,7 +88,7 @@ entropy-report:
     - tones-ci-sit
   before_script:
     - apk add --no-cache git
-    - yarn install --frozen-lockfile
+    - yarn install --frozen-lockfile --registry "$YARN_REGISTRY"
   script:
     - node scripts/entropy-scan.js > entropy.json
     - node scripts/generate-tech-debt-pr.js entropy.json
