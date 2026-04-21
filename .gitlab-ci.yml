@@ -1,13 +1,11 @@
 stages:
   - quality
 
-# 只在 MR 或 scheduled pipeline 下创建 pipeline。
-# 普通 git push 不触发流水线，避免 "0 jobs" 产生误导性的红色 failed badge。
+# 只在 MR 或 scheduled pipeline 下创建 pipeline，avoid 误导性的 0-job pipeline。
 workflow:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    - when: never
 
 default:
   image: node:18-alpine
@@ -18,11 +16,13 @@ default:
     paths:
       - node_modules/
 
-.only-mr: &only-mr
+# 复用规则用 extends（GitLab 原生，兼容性比 YAML anchor 好）
+.only-mr:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
 install:
+  extends: .only-mr
   stage: quality
   script:
     - yarn install --frozen-lockfile
@@ -30,25 +30,28 @@ install:
     paths:
       - node_modules/
     expire_in: 1 hour
-  <<: *only-mr
 
 lint:
+  extends: .only-mr
   stage: quality
-  needs: [install]
+  needs:
+    - install
   script:
     - yarn lint
-  <<: *only-mr
 
 structure-tests:
+  extends: .only-mr
   stage: quality
-  needs: [install]
+  needs:
+    - install
   script:
     - yarn test:structure
-  <<: *only-mr
 
 duplication:
+  extends: .only-mr
   stage: quality
-  needs: [install]
+  needs:
+    - install
   script:
     - yarn dup:check
   artifacts:
@@ -56,7 +59,6 @@ duplication:
     paths:
       - report/jscpd/
     expire_in: 1 week
-  <<: *only-mr
 
 # 波次 3：熵扫描（scheduled）
 # 需要在 GitLab Settings → CI/CD → Schedules 新建：cron "0 0 * * 1"（每周一 00:00）
