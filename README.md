@@ -46,6 +46,10 @@ yarn ci:quality      # one-shot local check: lint + structure + duplication
 
 Any violation of the custom rules will surface immediately in your IDE with a pointer to the relevant `AGENTS.md` section.
 
+## CI Status
+
+![Quality Checks](https://github.com/yuyouquan/HarnessFontCode/workflows/Quality%20Checks/badge.svg)
+
 ## License
 
 MIT
