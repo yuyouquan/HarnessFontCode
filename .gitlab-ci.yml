@@ -1,6 +1,14 @@
 stages:
   - quality
 
+# 只在 MR 或 scheduled pipeline 下创建 pipeline。
+# 普通 git push 不触发流水线，避免 "0 jobs" 产生误导性的红色 failed badge。
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - when: never
+
 default:
   image: node:18-alpine
   cache:
